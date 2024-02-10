@@ -149,6 +149,7 @@ const showingNavigationDropdown = ref(false);
 <!--            </main>-->
 <!--        </div>-->
 <!--    </div>-->
+
     <nav class="fixed top-0 z-50 w-full bg-white border-b border-gray-200">
         <div class="px-3 py-3 lg:px-5 lg:pl-3">
             <div class="flex items-center justify-between">
@@ -172,7 +173,7 @@ const showingNavigationDropdown = ref(false);
                         <div>
                             <div class="text-sm font-bold text-zinc-800">{{ $page.props.auth.user.name }}</div>
                             <div class="text-[#878787] text-xs leading-4 whitespace-nowrap text-right">
-                                администратор
+                                {{ $page.props.auth.user.roles[0] }}
                             </div>
                         </div>
 
@@ -223,19 +224,21 @@ const showingNavigationDropdown = ref(false);
     <aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen pt-24 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0" aria-label="Sidebar">
         <div class="h-full px-3 pb-4 overflow-y-auto bg-white">
             <ul class="space-y-2 font-medium">
-                <li>
-                    <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-[#ecf7f7] group">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <path d="M17.5401 8.30989C18.8987 8.30989 20.0001 7.20851 20.0001 5.84989C20.0001 4.49127 18.8987 3.38989 17.5401 3.38989C16.1814 3.38989 15.0801 4.49127 15.0801 5.84989C15.0801 7.20851 16.1814 8.30989 17.5401 8.30989Z" stroke="#2A2A2A" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M6.46001 8.30989C7.81863 8.30989 8.92 7.20851 8.92 5.84989C8.92 4.49127 7.81863 3.38989 6.46001 3.38989C5.10139 3.38989 4 4.49127 4 5.84989C4 7.20851 5.10139 8.30989 6.46001 8.30989Z" stroke="#2A2A2A" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M17.5401 20.6099C18.8987 20.6099 20.0001 19.5086 20.0001 18.1499C20.0001 16.7913 18.8987 15.6899 17.5401 15.6899C16.1814 15.6899 15.0801 16.7913 15.0801 18.1499C15.0801 19.5086 16.1814 20.6099 17.5401 20.6099Z" stroke="#2A2A2A" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M6.46001 20.6099C7.81863 20.6099 8.92 19.5086 8.92 18.1499C8.92 16.7913 7.81863 15.6899 6.46001 15.6899C5.10139 15.6899 4 16.7913 4 18.1499C4 19.5086 5.10139 20.6099 6.46001 20.6099Z" stroke="#2A2A2A" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                        <span class="text-neutral-800 text-sm font-medium leading-4 self-center grow whitespace-nowrap my-auto ms-3">Главная</span>
-                    </a>
+                <li v-if="$page.props.auth.user.permissions.includes('view main')">
+                    <Link href="#">
+                        <div class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-[#ecf7f7] group cursor-pointer">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M17.5401 8.30989C18.8987 8.30989 20.0001 7.20851 20.0001 5.84989C20.0001 4.49127 18.8987 3.38989 17.5401 3.38989C16.1814 3.38989 15.0801 4.49127 15.0801 5.84989C15.0801 7.20851 16.1814 8.30989 17.5401 8.30989Z" stroke="#2A2A2A" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M6.46001 8.30989C7.81863 8.30989 8.92 7.20851 8.92 5.84989C8.92 4.49127 7.81863 3.38989 6.46001 3.38989C5.10139 3.38989 4 4.49127 4 5.84989C4 7.20851 5.10139 8.30989 6.46001 8.30989Z" stroke="#2A2A2A" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M17.5401 20.6099C18.8987 20.6099 20.0001 19.5086 20.0001 18.1499C20.0001 16.7913 18.8987 15.6899 17.5401 15.6899C16.1814 15.6899 15.0801 16.7913 15.0801 18.1499C15.0801 19.5086 16.1814 20.6099 17.5401 20.6099Z" stroke="#2A2A2A" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M6.46001 20.6099C7.81863 20.6099 8.92 19.5086 8.92 18.1499C8.92 16.7913 7.81863 15.6899 6.46001 15.6899C5.10139 15.6899 4 16.7913 4 18.1499C4 19.5086 5.10139 20.6099 6.46001 20.6099Z" stroke="#2A2A2A" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <span class="text-neutral-800 text-sm font-medium leading-4 self-center grow whitespace-nowrap my-auto ms-3">Главная</span>
+                        </div>
+                    </Link>
                 </li>
-                <li>
-                    <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg group">
+                <li v-if="$page.props.auth.user.permissions.includes('view pricing formation')">
+                    <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-[#ecf7f7] group">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <path d="M6.88086 18.1501V16.0801" stroke="#2A2A2A" stroke-width="1.5" stroke-linecap="round"/>
                             <path d="M12 18.15V14.01" stroke="#2A2A2A" stroke-width="1.5" stroke-linecap="round"/>
@@ -247,7 +250,7 @@ const showingNavigationDropdown = ref(false);
                         <span class="flex-1 text-neutral-800 text-sm font-medium leading-4 self-center grow whitespace-nowrap my-auto ms-3">Ценообразование</span>
                     </a>
                 </li>
-                <li>
+                <li v-if="$page.props.auth.user.permissions.includes('view sales')">
                     <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-[#ecf7f7] group">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <path d="M2 8.50488H22" stroke="#2A2A2A" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
@@ -258,7 +261,18 @@ const showingNavigationDropdown = ref(false);
                         <span class="flex-1 text-neutral-800 text-sm font-medium leading-4 self-center grow whitespace-nowrap my-auto ms-3">Продажи</span>
                     </a>
                 </li>
-                <li>
+                <li v-if="$page.props.auth.user.permissions.includes('view bookings')">
+                    <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-[#ecf7f7] group">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M2 8.50488H22" stroke="#2A2A2A" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M6 16.5049H8" stroke="#2A2A2A" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M10.5 16.5049H14.5" stroke="#2A2A2A" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M6.44 3.50488H17.55C21.11 3.50488 22 4.38488 22 7.89488V16.1049C22 19.6149 21.11 20.4949 17.56 20.4949H6.44C2.89 20.5049 2 19.6249 2 16.1149V7.89488C2 4.38488 2.89 3.50488 6.44 3.50488Z" stroke="#2A2A2A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span class="flex-1 text-neutral-800 text-sm font-medium leading-4 self-center grow whitespace-nowrap my-auto ms-3">Бронирования</span>
+                    </a>
+                </li>
+                <li v-if="$page.props.auth.user.permissions.includes('view owners')">
                     <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-[#ecf7f7] group">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <path d="M9.16055 10.87C9.06055 10.86 8.94055 10.86 8.83055 10.87C6.45055 10.79 4.56055 8.84 4.56055 6.44C4.56055 3.99 6.54055 2 9.00055 2C11.4505 2 13.4405 3.99 13.4405 6.44C13.4305 8.84 11.5405 10.79 9.16055 10.87Z" stroke="#2A2A2A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -269,7 +283,7 @@ const showingNavigationDropdown = ref(false);
                         <span class="flex-1 text-neutral-800 text-sm font-medium leading-4 self-center grow whitespace-nowrap my-auto ms-3">Собственники</span>
                     </a>
                 </li>
-                <li>
+                <li v-if="$page.props.auth.user.permissions.includes('view apartments')">
                     <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-[#ecf7f7] group">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <path d="M2 22H22" stroke="#2A2A2A" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
@@ -281,7 +295,7 @@ const showingNavigationDropdown = ref(false);
                         <span class="flex-1 text-neutral-800 text-sm font-medium leading-4 self-center grow whitespace-nowrap my-auto ms-3">Объекты</span>
                     </a>
                 </li>
-                <li>
+                <li v-if="$page.props.auth.user.permissions.includes('view users')">
                     <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-[#ecf7f7] group">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <path d="M18.0001 7.16C17.9401 7.15 17.8701 7.15 17.8101 7.16C16.4301 7.11 15.3301 5.98 15.3301 4.58C15.3301 3.15 16.4801 2 17.9101 2C19.3401 2 20.4901 3.16 20.4901 4.58C20.4801 5.98 19.3801 7.11 18.0001 7.16Z" stroke="#2A2A2A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -296,20 +310,25 @@ const showingNavigationDropdown = ref(false);
                 </li>
 
             </ul>
-            <ul class="pt-4 mt-4 space-y-2 font-medium border-t border-gray-200">
+            <ul v-if="$page.props.auth.user.permissions.includes('view profile')" class="pt-4 mt-4 space-y-2 font-medium border-t border-gray-200">
                 <li>
-                    <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-[#ecf7f7] group">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <path d="M12 12C14.7614 12 17 9.76142 17 7C17 4.23858 14.7614 2 12 2C9.23858 2 7 4.23858 7 7C7 9.76142 9.23858 12 12 12Z" stroke="#2A2A2A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M20.5901 22C20.5901 18.13 16.7402 15 12.0002 15C7.26015 15 3.41016 18.13 3.41016 22" stroke="#2A2A2A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                        <span class="flex-1 text-neutral-800 text-sm font-medium leading-4 self-center grow whitespace-nowrap my-auto ms-3">Мой профиль</span>
-                    </a>
+                    <Link :href="route('profile.edit')">
+                        <div class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-[#ecf7f7] group cursor-pointer">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M12 12C14.7614 12 17 9.76142 17 7C17 4.23858 14.7614 2 12 2C9.23858 2 7 4.23858 7 7C7 9.76142 9.23858 12 12 12Z" stroke="#2A2A2A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M20.5901 22C20.5901 18.13 16.7402 15 12.0002 15C7.26015 15 3.41016 18.13 3.41016 22" stroke="#2A2A2A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <span class="flex-1 text-neutral-800 text-sm font-medium leading-4 self-center grow whitespace-nowrap my-auto ms-3">Мой профиль</span>
+                        </div>
+                    </Link>
+
                 </li>
             </ul>
         </div>
     </aside>
 
-    <div class="p-4 bg-[#ecf7f7] sm:ml-64">
-    </div>
+    <main>
+        <slot />
+    </main>
+
 </template>
