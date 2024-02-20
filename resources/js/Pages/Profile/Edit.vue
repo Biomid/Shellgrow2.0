@@ -127,64 +127,17 @@ export default {
                             </button>
                         </div>
                     </div>
-<!--                    <div class="flex flex-col ml-5 w-[76%] max-md:ml-0 max-md:w-full">-->
-<!--                        <div class="flex flex-col grow max-md:mt-5 max-md:max-w-full">-->
-<!--                            <div class="flex flex-col p-5 bg-white rounded-xl shadow-sm leading-[120%] max-md:max-w-full">-->
-<!--                                <div class="text-base font-medium text-emerald-900 max-md:max-w-full">-->
-<!--                                    Мои данные-->
-<!--                                </div>-->
-<!--                                <div-->
-<!--                                    class="flex flex-col items-start py-1.5 pr-20 pl-4 mt-5 rounded-lg border border-solid bg-neutral-100 border-stone-300 max-md:pr-5 max-md:max-w-full"-->
-<!--                                >-->
-<!--                                    <div class="text-xs text-neutral-400">Фамилия, имя, отчество</div>-->
-<!--                                    <div class="text-sm whitespace-nowrap text-zinc-800">-->
-<!--                                        Собственников Собственник Собственникович-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                                <div-->
-<!--                                    class="flex flex-col items-start py-1.5 pr-20 pl-4 mt-4 whitespace-nowrap bg-white rounded-lg border border-solid border-stone-300 max-md:pr-5 max-md:max-w-full"-->
-<!--                                >-->
-<!--                                    <div class="text-xs text-neutral-400">Телефон</div>-->
-<!--                                    <div class="text-sm text-zinc-800">-->
-<!--                                        <span class="text-zinc-800">+7 </span-->
-<!--                                        ><span class="text-zinc-800">7778901122</span>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                                <div-->
-<!--                                    class="flex flex-col items-start py-1.5 pr-20 pl-4 mt-4 whitespace-nowrap bg-white rounded-lg border border-solid border-stone-300 max-md:pr-5 max-md:max-w-full"-->
-<!--                                >-->
-<!--                                    <div class="text-xs text-neutral-400">E-mail</div>-->
-<!--                                    <div class="text-sm text-zinc-800">sobstvennik@gmail.com</div>-->
-<!--                                </div>-->
-<!--                                <div-->
-<!--                                    class="flex flex-col items-start py-1.5 pr-20 pl-4 mt-4 whitespace-nowrap rounded-lg border border-solid bg-neutral-100 border-stone-300 max-md:pr-5 max-md:max-w-full"-->
-<!--                                >-->
-<!--                                    <div class="text-xs text-neutral-400">Дата рождения</div>-->
-<!--                                    <div class="text-sm text-zinc-800">01.01.1980</div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                            <button-->
-<!--                                class="justify-center self-start px-11 py-3.5 mt-5 text-sm font-medium leading-4 text-center text-white whitespace-nowrap rounded-lg bg-emerald-900 max-md:px-5"-->
-<!--                            >-->
-<!--                                Сохранить изменения-->
-<!--                            </button>-->
-<!--                        </div>-->
-<!--                    </div>-->
-
-<!--                    <UpdateProfileInformationForm-->
-<!--                        class="max-w-xl"-->
-<!--                    />-->
                     <template v-if="openTab === 1">
-                        <UpdateProfileInformationForm class="max-w-xl" />
+                        <UpdateProfileInformationForm />
                     </template>
                     <template v-if="openTab === 2">
-                        <BankDetails class="max-w-xl" />
+                        <BankDetails />
                     </template>
                     <template v-else-if="openTab === 3">
-                        <UpdatePasswordForm class="max-w-xl" />
+                        <UpdatePasswordForm />
                     </template>
                     <template v-else-if="openTab === 4">
-                        <MyAgent class="max-w-xl" />
+                        <MyAgent />
                     </template>
                 </div>
             </div>
@@ -239,5 +192,8 @@ export default {
 <!--        </div>-->
 <!--    </AuthenticatedLayout>-->
 <!--</template>-->
+
+
+
 
 

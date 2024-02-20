@@ -27,6 +27,7 @@ export default {
         "./resources/**/*.blade.php",
         "./resources/**/*.js",
         "./resources/**/*.vue",
+        "./node_modules/flowbite/**/*.js"
     ],
     theme: {
         extend: {
@@ -48,6 +49,7 @@ export default {
         },
         fontFamily: {
             'body': [
+                // 'ABeeZee'
                 'Inter',
                 'ui-sans-serif',
                 'system-ui',
@@ -65,6 +67,7 @@ export default {
                 'Noto Color Emoji'
             ],
             'sans': [
+                // 'ABeeZee'
                 'Inter',
                 'ui-sans-serif',
                 'system-ui',
@@ -84,5 +87,5 @@ export default {
         }
     },
     darkMode: false,
-    plugins: [],
+    plugins: []
 }

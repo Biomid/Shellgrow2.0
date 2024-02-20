@@ -19,7 +19,7 @@ import TextInput from "@/Components/TextInput.vue";
                     </div>
                     <div>
                         <TextInput id="agent_phone" type="text" class="mt-1 block w-full"
-                                   label="Телефон" required autofocus autocomplete="name"/>
+                                   label="Телефон" required autofocus autocomplete="name" />
                     </div>
                     <div>
                         <TextInput id="agent_email" type="email" class="mt-1 block w-full" label="E-mail"

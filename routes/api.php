@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminUsersCreateController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +18,12 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::middleware(['auth','role:admin'])->group(function (){
+    Route::get('/owners', [AdminUsersCreateController::class,'ShowUsers'])->name('owners');
+    Route::get('/agents', [AdminUsersCreateController::class,'ShowAgents'])->name('agents');
+    Route::get('/apartments', [AdminUsersCreateController::class,'ShowApartments'])->name('apartments');
+});
+
+//Route::get('/owners', [AdminUsersCreateController::class,'ShowUsers'])->name('owners');
+

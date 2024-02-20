@@ -19,7 +19,11 @@
     },
     "dependencies": {
         "@inertiajs/inertia-vue3": "^0.6.0",
+        "@themesberg/tailwind-datepicker": "^1.1.0",
         "@vueuse/core": "^10.7.2",
-        "date-fns": "^3.3.1"
+        "date-fns": "^3.3.1",
+        "flowbite": "^2.3.0",
+        "flowbite-datepicker": "^1.2.6",
+        "vue-toastification": "^1.7.14"
     }
 }

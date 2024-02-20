@@ -90,12 +90,15 @@ const props = defineProps({
     }
 });
 
+const emits = defineEmits(['copy']);
+
 const model = defineModel({
     type: String,
     required: true,
 });
 
 const inputId = `input_${Math.random().toString(36).substring(2, 9)}`;
+
 const input = ref('');
 const showPassword = ref(false);
 const copied = ref(false);
@@ -111,12 +114,13 @@ onMounted(() => {
 const handleCopy = () => {
     copy(model.value);
     copied.value = true;
+    emits('copy');
     setTimeout(() => {
         copied.value = false;
-    }, 2000);
+    }, 3000);
 };
 
-defineExpose({ focus: () => input.value.focus() });
+defineExpose({ focus: () => input.value.focus(), handleCopy });
 </script>
 
 <template>
@@ -127,7 +131,7 @@ defineExpose({ focus: () => input.value.focus() });
             v-model="model"
             ref="input"
             class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-solid border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-            placeholder=" "
+            placeholder=""
             autocomplete="on"
         />
         <label
@@ -171,6 +175,7 @@ defineExpose({ focus: () => input.value.focus() });
         </button>
         <button
             v-else-if="copyable"
+            :disabled="copied"
             @click.prevent="handleCopy"
             class="absolute inset-y-0 right-0 flex items-center px-2 mr-1"
         >

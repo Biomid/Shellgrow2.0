@@ -20,7 +20,6 @@ const form = useForm({
     email: '',
     password: '',
     remember: false,
-    errorToast: null,
     showPassword: false,
 });
 
